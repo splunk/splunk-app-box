@@ -1,0 +1,74 @@
+<form>
+  <label>Security Overview</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="range1" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-30d@d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  
+  <search id="search_auth_events">
+    <query>eventtype=box_events_authentication action!="unknown" | stats count by _time action ip_address</query>
+    <earliest>$range1.earliest$</earliest>
+    <latest>$range1.latest$</latest>
+  </search>
+  
+  <row>
+    <panel>
+      <chart>
+        <title>Login Activity</title>
+        <search base="search_auth_events">
+	    <query>timechart count by action limit=10 usenull=f |  eval pct_failed=failure/(failure+success)*100 | eval pct_failed=round(pct_failed,1) | rename pct_failed AS "% Failed"</query>
+	</search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.text">Count</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.text">% Failed</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.overlayFields">"% Failed"</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+	<option name="charting.fieldColors">{"success":0x00ff00, "failure":0xff0000}</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <map>
+        <title>Login Activity by Location</title>
+	 <search base="search_auth_events">
+	    <query>iplocation ip_address | geostats count by action</query>
+	</search>
+        <option name="mapping.data.maxClusters">100</option>
+        <option name="mapping.drilldown">all</option>
+        <option name="mapping.map.center">(0,0)</option>
+        <option name="mapping.map.zoom">2</option>
+        <option name="mapping.markerLayer.markerMaxSize">50</option>
+        <option name="mapping.markerLayer.markerMinSize">10</option>
+        <option name="mapping.markerLayer.markerOpacity">0.8</option>
+        <option name="mapping.tileLayer.maxZoom">7</option>
+        <option name="mapping.tileLayer.minZoom">0</option>
+	<option name="charting.fieldColors">{"success":0x00ff00, "failure":0xff0000}</option>
+      </map>
+    </panel>
+  </row>
+</form>
