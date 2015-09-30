@@ -1,5 +1,6 @@
 <nav search_view="search" color="#626262">
   <view name="security_overview" default='true' />
+  <view name="content_events" />
   <view name="search" />
   <view name="data_models" />
   <view name="reports" />
