@@ -1,0 +1,63 @@
+# Translations template for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-11-10 08:22-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.4\n"
+
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/app.conf:10
+msgid "Splunk App for Box"
+msgstr ""
+
+#. title
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/content_events.xml:15
+msgid "Most Common Events (click a bar for more details)"
+msgstr ""
+
+#. title
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/content_events.xml:55
+msgid "File Downloads by User"
+msgstr ""
+
+#. label
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/content_events.xml:2
+msgid "Content Events"
+msgstr ""
+
+#. label
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/content_events.xml:5
+msgid "Time range:"
+msgstr ""
+
+#. title
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/security_overview.xml:22
+msgid "Login Activity"
+msgstr ""
+
+#. title
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/security_overview.xml:57
+msgid "Login Activity by Location"
+msgstr ""
+
+#. label
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/security_overview.xml:2
+msgid "Security Overview"
+msgstr ""
+
+#. option
+#: /Applications/Splunk/etc/apps/splunk-app-box/default/data/ui/views/security_overview.xml:29
+msgid "Count"
+msgstr ""
+
